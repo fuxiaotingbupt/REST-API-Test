@@ -1,0 +1,5 @@
+{
+           "name": "delete",
+           "portGroup": "vlan883",
+            "isDhcp": True
+ }

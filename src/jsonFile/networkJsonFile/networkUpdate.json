@@ -1,0 +1,15 @@
+{
+    "name": "static",
+    "portGroup": "vlan883",
+    "isDhcp": False,
+    "dns1": "10.111.0.1",
+    "dns2": "10.111.0.2",
+    "ipBlocks": [
+        {
+            "beginIp": "10.111.88.157",
+            "endIp": "10.111.88.160"
+        }
+    ],
+    "gateway": "10.111.89.253",
+    "netmask": "255.255.254.0"
+}

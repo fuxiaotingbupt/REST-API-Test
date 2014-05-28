@@ -1,0 +1,5 @@
+{
+           "name": "dhcpNetwork",
+           "portGroup": "vlan883",
+            "isDhcp": True
+ }
