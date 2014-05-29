@@ -24,7 +24,7 @@ class RackTest(unittest.TestCase):
             strObject = putJsonFile.read()
             #Generate str to dic
             dicObject = eval(strObject)
-            racksPuted = api.racks.put(dicObject)
+            api.racks.put(dicObject)
         finally:
             putJsonFile.close()
     def testBgetRacks(self):

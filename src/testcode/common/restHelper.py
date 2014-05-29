@@ -75,8 +75,8 @@ class RestHelper:
     def post(self, path, body, headers={}):
         return self.transact('POST', path, body=body, headers=headers)
 
-    def postAction(self, path, headers={}):
-        return self.transact('POST', path, headers=headers)
+    def putAction(self, path, headers={}):
+        return self.transact('PUT', path, headers=headers)
 
     def delete(self, path, headers={}):
         return self.transact('DELETE', path, headers=headers)

@@ -55,12 +55,25 @@ class BasicAPI(object):
     def _get(self, url):
         return self._getJson(self._apiUrl(url))
 
-    '''
-    Return a response with Accepted status and put task uri in the Location of header that can be used to monitor the progress
-    '''
-
     def _delete(self, url):
+        '''
+         Return a response with Accepted status and put task uri in the Location of header that can be used to monitor the progress
+        '''
         response = self.rest.delete(self._apiUrl(url))
+        self._checkResponse(response)
+        if response.status == httplib.ACCEPTED:
+            taskUrl = self.rest.getLocationHeader(response)
+            return self._getJson(taskUrl)
+        else:
+            msg = response.read()
+            logger.error(msg)
+            return msg
+
+    def _action(self, url):
+        '''
+         Return a response with Accepted status and put task uri in the Location of header that can be used to monitor the progress
+        '''
+        response = self.rest.putAction(self._apiUrl(url))
         self._checkResponse(response)
         if response.status == httplib.ACCEPTED:
             taskUrl = self.rest.getLocationHeader(response)
@@ -81,7 +94,7 @@ class BasicAPI(object):
         if response.status == httplib.ACCEPTED:
             location = self.rest.getLocationHeader(response)
             task = self._getJson(location)
-            logger.info('Task information ' + task)
+            logger.info('Task information ' + str(task))
             task = self.connection.tasks.wait(task, 'COMPLETED')
             return self._getJson(location)
         else:
@@ -137,6 +150,9 @@ class CommonAPI(BasicAPI):
 
     def _putRack(self, putfields):
         return super(CommonAPI, self)._put(self._collectionURL(), putfields)
+
+    def _action(self, instanceName, action):
+        return super(CommonAPI,self)._action(self._instanceUrl(instanceName) + '?state=' + action)
 
     def get(self, instanceName):
         return self._get(self._instanceUrl(instanceName))
@@ -198,6 +214,10 @@ class Cluster(CommonAPI):
 
     def put(self, clusterName, putfields):
         return self._put(clusterName, putfields)
+
+    #Stop, start and resume a cluster.
+    def action(self,clusterName,action):
+        return self._action(clusterName,action)
 
 
 class Network(CommonAPI):

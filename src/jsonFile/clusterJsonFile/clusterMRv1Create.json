@@ -1,5 +1,5 @@
 {
-       "name": "clusterName",
+       "name": "cdhMRv1cluster",
        "type": "HDFS_MAPRED",
        "rpNames":["xfu"],
        "networkConfig": {"MGT_NETWORK": ["dhcpNetwork"]},
@@ -31,7 +31,7 @@
                    "hadoop_datanode",
                    "hadoop_tasktracker"
                ],
-               "instanceNum": 4,
+               "instanceNum": 2,
                "instanceType": "SMALL",
                "storage":
                {
@@ -65,5 +65,5 @@
                "haFlag": "off"
            }
        ],
-       "distro":"apache"
+       "distro":"cdh"
     }
