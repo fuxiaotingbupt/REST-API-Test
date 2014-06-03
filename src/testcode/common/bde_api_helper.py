@@ -62,8 +62,11 @@ class BasicAPI(object):
         response = self.rest.delete(self._apiUrl(url))
         self._checkResponse(response)
         if response.status == httplib.ACCEPTED:
-            taskUrl = self.rest.getLocationHeader(response)
-            return self._getJson(taskUrl)
+            location = self.rest.getLocationHeader(response)
+            task = self._getJson(location)
+            logger.info('Task information ' + str(task))
+            task = self.connection.tasks.wait(task,'COMPLETED')
+            return self._getJson(location)
         else:
             msg = response.read()
             logger.error(msg)
@@ -76,8 +79,11 @@ class BasicAPI(object):
         response = self.rest.putAction(self._apiUrl(url))
         self._checkResponse(response)
         if response.status == httplib.ACCEPTED:
-            taskUrl = self.rest.getLocationHeader(response)
-            return self._getJson(taskUrl)
+            location = self.rest.getLocationHeader(response)
+            task = self._getJson(location)
+            logger.info('Task information ' + str(task))
+            task = self.connection.tasks.wait(task,'COMPLETED')
+            return self._getJson(location)
         else:
             msg = response.read()
             logger.error(msg)
@@ -166,6 +172,9 @@ class CommonAPI(BasicAPI):
     def getVersion(self):
         return self._get(self.urlbase)
 
+    def getSpecFile(self,instanceName,spec):
+        return self._get(self._specfileUrl(instanceName,spec))
+
     def delete(self, instanceName):
         return self._delete(self._instanceUrl(instanceName))
 
@@ -177,6 +186,8 @@ class CommonAPI(BasicAPI):
 
     def _instanceUrlByID(self, instanceID):
         return self.urlbase + '/' + str(instanceID)
+    def _specfileUrl(self,instanceName,spec):
+        return self.urlbase + '/' + instanceName +'/' + spec
 
 
 class Task(CommonAPI):

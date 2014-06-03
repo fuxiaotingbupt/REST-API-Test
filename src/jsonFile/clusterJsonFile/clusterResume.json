@@ -1,5 +1,5 @@
 {
-       "name": "cdhMRv1cluster",
+       "name": "resume",
        "type": "HDFS_MAPRED",
        "specFile" : True,
        "rpNames":["xfu"],
@@ -17,7 +17,7 @@
                "instanceType": "MEDIUM",
                "storage":
                {
-                   "type": "shared",
+                   "type": "local",
                    "sizeGB": 50
                },
                "cpuNum": 2,
@@ -37,7 +37,7 @@
                "storage":
                {
                    "type": "local",
-                   "sizeGB": 50
+                   "sizeGB": 500
                },
                "cpuNum": 2,
                "memCapacityMB": 5000,
@@ -57,7 +57,7 @@
                "instanceType": "SMALL",
                "storage":
                {
-                   "type": "shared",
+                   "type": "local",
                    "sizeGB": 50
                },
                "cpuNum": 1,

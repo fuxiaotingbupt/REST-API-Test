@@ -33,27 +33,63 @@ class ClusterTest(unittest.TestCase):
                 #Get this newly created cluster by cluster name.
                 clusterCreated = api.clusters.get(instanceName)
                 logger.info(clusterCreated)
-                self.assertIsNotNone(clusterCreated,'Cluster has not been created!')
+                self.assertIsNotNone(clusterCreated, 'Cluster has not been created!')
             finally:
                 createJsonFileToRead.close()
 
     def testBgetClusters(self):
         '''
-        Get all clusters, and the return type should be list and  not be none after test A.
+        Get all clusters, and the return type should be list and not be none after test A.
         '''
         allclusters = api.clusters.getAll()
         logger.info(allclusters)
         self.assertTrue(type(allclusters) == list)
-        self.assertIsNotNone(allclusters,'There is no clusters.')
+        self.assertIsNotNone(allclusters, 'There is no clusters.')
 
     def testCstopCluster(self):
+        #Stop a cluster.
         clusters = api.clusters.getAll()
         if len(clusters) > 0:
             for cluster in clusters:
-                if str(cluster['status'])== 'RUNNING':
-                    api.clusters.action(cluster['name'],'stop')
+                if str(cluster['status']) == 'RUNNING':
+                    api.clusters.action(cluster['name'], 'stop')
+                    break
                 else:
-                    logger.info('There is no running cluster to stop!')
+                    logger.error('There is no running cluster to stop!')
         else:
-            logger.error('There is no clusters to stop')
-  #  def testDstartCluster(self):
+            logger.error('There is no clusters to stop!')
+
+    def testDstartCluster(self):
+        #Start a cluster.
+        clusters = api.clusters.getAll()
+        if len(clusters) > 0:
+            for cluster in clusters:
+                if str(cluster['status']) == 'STOPPED':
+                    api.clusters.action(cluster['name'], 'start')
+                    break
+                else:
+                    logger.error('There is no stopped cluster to start!')
+        else:
+            logger.error('There is no clusters to start!')
+
+    def testEgetSpecFile(self):
+        #Get one cluster's specfile.
+        clusters = api.clusters.getAll()
+        if len(clusters) > 0:
+            clusterGeted = clusters[0]
+            clusterSpec = api.clusters.getSpecFile(clusterGeted['name'], 'spec')
+            logger.info('Cluster ' + clusterGeted + 'specfile is ' + clusterSpec)
+        else:
+            logger.info('There is no clusters!')
+
+    def testFdeleteCluster(self):
+        if (api.clusters.get('resume') is not None):
+            clusterDeleted = api.clusters.get('resume')
+            api.clusters.delete(clusterDeleted['name'])
+        else:
+            logger.error('There is no cluster named resume!')
+        self.assertTrue(api.clusters.get('resume') is None, 'Cluster resume has not been deleted!')
+
+
+
+

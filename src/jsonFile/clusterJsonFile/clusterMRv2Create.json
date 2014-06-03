@@ -1,6 +1,7 @@
 {
        "name": "cdhMRv2cluster",
        "type": "HDFS_MAPRED",
+       "specFile" : True,
        "rpNames":["xfu"],
        "networkConfig": {"MGT_NETWORK": ["dhcpNetwork"]},
        "nodeGroups":
