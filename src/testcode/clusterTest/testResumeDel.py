@@ -16,7 +16,9 @@ api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
 class ResumeTest(unittest.TestCase):
     @classmethod
     def setUpClass(self):
-        # Create a small datastore
+        '''
+        Create a small datastore
+        '''
         datastoreCreatedFile = open("../../jsonFile/datastoreJsonFile/datastoreCreateSmall.json")
         try:
             strObject = datastoreCreatedFile.read()
@@ -30,7 +32,9 @@ class ResumeTest(unittest.TestCase):
             datastoreCreatedFile.close()
 
     def testAresume(self):
-        #Create a cluster with large local datastore.
+        '''
+        Create a cluster with large local datastore.
+        '''
         createJsonFileToRead = open("../../jsonFile/clusterJsonFile/clusterResume.json")
         try:
             strObject = createJsonFileToRead.read()
@@ -62,7 +66,9 @@ class ResumeTest(unittest.TestCase):
         self.assertTrue(str(clusterResumed['status']) == 'RUNNING')
 
     def testBdelete(self):
-        clusterNeedDelete = api.clusters.get('resume')
+        '''
+        Delete this resumed cluster.
+        '''
         api.clusters.delete('resume')
         try:
             api.clusters.get('resume')
@@ -70,10 +76,13 @@ class ResumeTest(unittest.TestCase):
             True
         else:
             False
+
     @classmethod
     def tearDownClass(self):
-        #Delete  datastores small and dsResume
+        '''
+        Delete  datastores small and dsResume
+        '''
         api.datastores.delete('small')
-        api.datastores.delete('dsReume')
+        api.datastores.delete('dsResume')
 
 

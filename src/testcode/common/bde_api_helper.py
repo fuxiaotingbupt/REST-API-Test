@@ -65,7 +65,7 @@ class BasicAPI(object):
             location = self.rest.getLocationHeader(response)
             task = self._getJson(location)
             logger.info('Task information ' + str(task))
-            task = self.connection.tasks.wait(task,'COMPLETED')
+            task = self.connection.tasks.wait(task, 'COMPLETED')
             return self._getJson(location)
         else:
             msg = response.read()
@@ -82,7 +82,7 @@ class BasicAPI(object):
             location = self.rest.getLocationHeader(response)
             task = self._getJson(location)
             logger.info('Task information ' + str(task))
-            task = self.connection.tasks.wait(task,'COMPLETED')
+            task = self.connection.tasks.wait(task, 'COMPLETED')
             return self._getJson(location)
         else:
             msg = response.read()
@@ -114,6 +114,9 @@ class BasicAPI(object):
         self._checkResponse(response)
         if response.status == httplib.ACCEPTED:
             location = self.rest.getLocationHeader(response)
+            task = self._getJson(location)
+            logger.info('Task information ' + str(task))
+            task = self.connection.tasks.wait(task, 'COMPLETED')
             return self._getJson(location)
         else:
             msg = response.read()
@@ -136,6 +139,7 @@ class BasicAPI(object):
     def _apiUrl(self, url):
         if url[0] != '/' and urlparse.urlsplit(url).scheme == '':
             url = '/serengeti/api/' + url
+            logger.info(url)
         return url
 
 
@@ -158,7 +162,10 @@ class CommonAPI(BasicAPI):
         return super(CommonAPI, self)._put(self._collectionURL(), putfields)
 
     def _action(self, instanceName, action):
-        return super(CommonAPI,self)._action(self._instanceUrl(instanceName) + '?state=' + action)
+        return super(CommonAPI, self)._action(self._instanceUrl(instanceName) + '?state=' + action)
+
+    def _scale(self, instanceName, groupName, scale, putfields):
+        return super(CommonAPI, self)._put(self._scaleUrl(instanceName, groupName, scale), putfields)
 
     def get(self, instanceName):
         return self._get(self._instanceUrl(instanceName))
@@ -172,8 +179,8 @@ class CommonAPI(BasicAPI):
     def getVersion(self):
         return self._get(self.urlbase)
 
-    def getSpecFile(self,instanceName,spec):
-        return self._get(self._specfileUrl(instanceName,spec))
+    def getSpecFile(self, instanceName, spec):
+        return self._get(self._specfileUrl(instanceName, spec))
 
     def delete(self, instanceName):
         return self._delete(self._instanceUrl(instanceName))
@@ -186,8 +193,12 @@ class CommonAPI(BasicAPI):
 
     def _instanceUrlByID(self, instanceID):
         return self.urlbase + '/' + str(instanceID)
-    def _specfileUrl(self,instanceName,spec):
-        return self.urlbase + '/' + instanceName +'/' + spec
+
+    def _specfileUrl(self, instanceName, spec):
+        return self.urlbase + '/' + instanceName + '/' + spec
+
+    def _scaleUrl(self, instanceName, groupName, scale):
+        return self.urlbase + '/' + instanceName + '/' + 'nodegroup' + '/' + groupName + '/' + scale
 
 
 class Task(CommonAPI):
@@ -227,8 +238,12 @@ class Cluster(CommonAPI):
         return self._put(clusterName, putfields)
 
     #Stop, start and resume a cluster.
-    def action(self,clusterName,action):
-        return self._action(clusterName,action)
+    def action(self, clusterName, action):
+        return self._action(clusterName, action)
+
+    #Scale up/down cpu and mem, scale out nodegroup.
+    def scale(self, instanceName, groupName, scale, putfields):
+        return self._scale(instanceName, groupName, scale, putfields)
 
 
 class Network(CommonAPI):
@@ -249,12 +264,14 @@ class ResourcePool(CommonAPI):
     def create(self, postfields):
         return self._create(postfields)
 
+
 class Datastore(CommonAPI):
     def __init__(self, connection):
         super(Datastore, self).__init__(connection, 'datastore')
 
     def create(self, postfields):
         return self._create(postfields)
+
 
 class Distro(CommonAPI):
     def __init__(self, connection):
@@ -265,8 +282,10 @@ class Version(CommonAPI):
     def __init__(self, connection):
         super(Version, self).__init__(connection, 'hello')
 
+
 class Rack(CommonAPI):
-    def __init__(self,connection):
-        super(Rack,self).__init__(connection,'rack')
-    def put(self,putfields):
+    def __init__(self, connection):
+        super(Rack, self).__init__(connection, 'rack')
+
+    def put(self, putfields):
         return self._putRack(putfields)
