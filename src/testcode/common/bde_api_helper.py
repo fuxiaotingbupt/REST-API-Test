@@ -167,6 +167,9 @@ class CommonAPI(BasicAPI):
     def _scale(self, instanceName, groupName, scale, putfields):
         return super(CommonAPI, self)._put(self._scaleUrl(instanceName, groupName, scale), putfields)
 
+    def _param(self, instanceName, param, putfields):
+        return super(CommonAPI, self)._put(self._paramUrl(instanceName, param), putfields)
+
     def get(self, instanceName):
         return self._get(self._instanceUrl(instanceName))
 
@@ -199,6 +202,9 @@ class CommonAPI(BasicAPI):
 
     def _scaleUrl(self, instanceName, groupName, scale):
         return self.urlbase + '/' + instanceName + '/' + 'nodegroup' + '/' + groupName + '/' + scale
+
+    def _paramUrl(self, instanceName, param):
+        return self.urlbase + '/' + instanceName + '/' + param
 
 
 class Task(CommonAPI):
@@ -244,6 +250,11 @@ class Cluster(CommonAPI):
     #Scale up/down cpu and mem, scale out nodegroup.
     def scale(self, instanceName, groupName, scale, putfields):
         return self._scale(instanceName, groupName, scale, putfields)
+
+    #Change elasticity mode, IO priority, and maximum or minimum number of powered on compute nodes under auto mode.
+    #Turn on or off some compute nodes
+    def param(self, instanceName, param, putfields):
+        return self._param(instanceName, param, putfields)
 
 
 class Network(CommonAPI):
