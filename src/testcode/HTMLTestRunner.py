@@ -130,6 +130,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
+__version__ = "0.8.2"
+
+
+
+
+
 """
 
 Change History
@@ -1636,7 +1643,7 @@ main = TestProgram
 
 if __name__ == "__main__":
 
-   #main(module=None)
+   main(module=None)
 
    print(HTMLTestRunner.HTML_TMPL)
 
