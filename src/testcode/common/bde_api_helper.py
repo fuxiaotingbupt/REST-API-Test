@@ -91,7 +91,6 @@ class BasicAPI(object):
 
     def _createJson(self, url, obj):
         data = json.dumps(obj)
-        #data = json.load(obj)
         response = self.rest.post(url, body=data)
         self._checkResponse(response)
         if response.status == httplib.OK:

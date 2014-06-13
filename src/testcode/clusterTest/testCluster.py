@@ -78,17 +78,17 @@ class ClusterTest(unittest.TestCase):
         if len(clusters) > 0:
             clusterGeted = clusters[0]
             clusterSpec = api.clusters.getSpecFile(clusterGeted['name'], 'spec')
-            logger.info('Cluster ' + clusterGeted + 'specfile is ' + clusterSpec)
+            logger.info(clusterSpec)
         else:
             logger.info('There is no clusters!')
 
     def testFdeleteCluster(self):
-        if (api.clusters.get('resume') is not None):
-            clusterDeleted = api.clusters.get('resume')
+        if (api.clusters.get('cdhMRv2cluster') is not None):
+            clusterDeleted = api.clusters.get('cdhMRv2cluster')
             api.clusters.delete(clusterDeleted['name'])
         else:
-            logger.error('There is no cluster named resume!')
-        self.assertTrue(api.clusters.get('resume') is None, 'Cluster resume has not been deleted!')
+            logger.error('There is no cluster named cdhMRv2cluster!')
+        self.assertTrue(api.clusters.get('cdhMRv2cluster') is None, 'Cluster cdhMRv2cluster has not been deleted!')
 
 
 

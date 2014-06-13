@@ -88,7 +88,9 @@ class RestHelper:
         return response.getheader('location')
 
     def _relativePath(self, path):
+        logger.info('path ' + str(path))
         uri = urlparse.urlsplit(path)
+        logger.info('uri ' + str(uri))
         if uri.scheme == '':  # was already relative, not absolute, url
             return path
         return uri.path

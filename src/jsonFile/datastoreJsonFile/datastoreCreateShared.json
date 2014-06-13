@@ -1,7 +1,7 @@
 {
   "name": "dssharedTest",
   "spec": [
-    "LUN-1",
+    "LUN-42",
   ],
   "type": "SHARED"
 }

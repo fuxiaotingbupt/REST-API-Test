@@ -130,14 +130,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
-__author__ = "Wai Yip Tung"
-
-__version__ = "0.8.2"
-
-
-
-
-
 """
 
 Change History
