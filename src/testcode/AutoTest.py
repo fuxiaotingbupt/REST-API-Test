@@ -17,7 +17,6 @@ def suite():
        suite.addTests(tests)
    return suite
 if __name__ == "__main__":
-   unittest.main(defaultTest = 'suite', argv = ['--verbose', '-v'])
    fp = file('resttest_report.html', 'wb')
    runner = HTMLTestRunner.HTMLTestRunner(
                                           stream = fp,verbosity = 2,title = 'REST API TEST RESULT',
