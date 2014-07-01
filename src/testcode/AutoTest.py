@@ -1,6 +1,5 @@
 #!/usr/bin/python
-#from DistroTest import DistroTest
-#from RPTest import RPTest
+
 import unittest
 import sys
 

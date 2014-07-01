@@ -3,36 +3,28 @@ __author__ = 'xfu'
 # testDatastore.py -- Datastore related test cases
 from src.testcode.common import bde_api_helper
 from src.testcode.common import Constants
+from src.testcode.common.testBase import TestBase
 import unittest
-import logging
-
-#Configure logging
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-logger.addHandler(logging.StreamHandler())
-# initialize API helper
-api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
-
 
 class DatastoreTest(unittest.TestCase):
+    '''
+    Configure logging and Initialize API connection
+    '''
+    testBaseInstance = TestBase()
+    logger = testBaseInstance.setLogger()
+    api = testBaseInstance.initializeAPI()
+
     def testAcreateLocalDatastore(self):
         '''
         Create a local datastore. And get this datastore information by its name.
         '''
-        createJsonFile = open("../../jsonFile/datastoreJsonFile/datastoreCreateLocal.json")
-        try:
-
-            strObject = createJsonFile.read()
-            #Generate str to dic
-            dicObject = eval(strObject)
-            instanceName = dicObject['name']
-            dsCreated = api.datastores.create(dicObject)
-        finally:
-            createJsonFile.close()
+        createJsonFile = self.testBaseInstance.getJsonFile("../../jsonFile/datastoreJsonFile/datastoreCreateLocal.json")
+        instanceName = createJsonFile['name']
+        dsCreated = self.api.datastores.create(createJsonFile)
         # Get a datastore information by its name.
-        dsGet = api.datastores.get(instanceName)
+        dsGet = self.api.datastores.get(instanceName)
         self.assertIsNotNone(dsGet, "dslocalTest does not create successfully! ")
-        logger.info(dsGet)
+        self.logger.info(dsGet)
 
     def testBcreateSharedDatastore(self):
         '''
@@ -45,20 +37,20 @@ class DatastoreTest(unittest.TestCase):
             #Generate str to dic
             dicObject = eval(strObject)
             instanceName = dicObject['name']
-            dsCreated = api.datastores.create(dicObject)
+            dsCreated = self.api.datastores.create(dicObject)
         finally:
             createJsonFile.close()
         # Get a datastore information by its name.
-        dsGet = api.datastores.get(instanceName)
+        dsGet = self.api.datastores.get(instanceName)
         self.assertIsNotNone(dsGet, "dssharedTest does not create successfully! ")
-        logger.info(dsGet)
+        self.logger.info(dsGet)
 
     def testCgetDatastores(self):
         '''
         Get all datastores.
         '''
-        datastores = api.datastores.getAll()
-        logger.info(datastores)
+        datastores = self.api.datastores.getAll()
+        self.logger.info(datastores)
         assert len(datastores) > 0
 
     def testDdeleteDatastore(self):
@@ -66,10 +58,10 @@ class DatastoreTest(unittest.TestCase):
         Delete a datastore.
         '''
         #Delete datastore created at case A.
-        api.datastores.delete('dslocalTest')
+        self.api.datastores.delete('dslocalTest')
         #Try to get this datastore by its name, and check whether it's none or not.
         try:
-            api.datastores.get('dslocalTest')
+            self.api.datastores.get('dslocalTest')
         except Exception:
             True
         else:
@@ -78,7 +70,7 @@ class DatastoreTest(unittest.TestCase):
     @classmethod
     def tearDownClass(self):
         '''
-        Create a resourcepool for other test.
+        Create a datastore for other test.
         '''
         createJsonFile = open("../../jsonFile/datastoreJsonFile/datastoreCreateLocal.json")
         try:
@@ -87,12 +79,12 @@ class DatastoreTest(unittest.TestCase):
             #Generate str to dic
             dicObject = eval(strObject)
             instanceName = dicObject['name']
-            dsCreated = api.datastores.create(dicObject)
+            dsCreated = self.api.datastores.create(dicObject)
         finally:
             createJsonFile.close()
         # Get a datastore information by its name.
-        dsGet = api.datastores.get(instanceName)
-        logger.info(dsGet)
+        dsGet = self.api.datastores.get(instanceName)
+        self.logger.info(dsGet)
         assert dsGet is not None
 
 

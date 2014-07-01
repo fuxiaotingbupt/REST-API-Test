@@ -2,10 +2,10 @@
     {
         "name": "rack",
         "hosts": [
-            "sin2-pekaurora-bdcqe022.eng.vmware.com",
-            "sin2-pekaurora-bdcqe023.eng.vmware.com",
-            "sin2-pekaurora-bdcqe035.eng.vmware.com",
-            "sin2-pekaurora-bdcqe036.eng.vmware.com"
+            "sin2-pekaurora-bdcqe007.eng.vmware.com",
+            "sin2-pekaurora-bdcqe010.eng.vmware.com",
+            "sin2-pekaurora-bdcqe020.eng.vmware.com",
+            "sin2-pekaurora-bdcqe021.eng.vmware.com"
         ]
     }
 ]

@@ -1,5 +1,5 @@
 {
-           "name": "dhcpNetwork",
+           "name": "dhcpNetworkTest",
            "portGroup": "vlan883",
             "isDhcp": True
  }

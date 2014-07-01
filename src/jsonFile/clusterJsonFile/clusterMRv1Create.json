@@ -4,6 +4,7 @@
        "specFile" : True,
        "rpNames":["rpCreate"],
        "networkConfig": {"MGT_NETWORK": ["dhcpNetwork"]},
+       "appManager":"Ironfan",
        "nodeGroups":
        [
            {

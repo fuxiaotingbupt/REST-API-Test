@@ -88,7 +88,13 @@ class ClusterTest(unittest.TestCase):
             api.clusters.delete(clusterDeleted['name'])
         else:
             logger.error('There is no cluster named cdhMRv2cluster!')
-        self.assertTrue(api.clusters.get('cdhMRv2cluster') is None, 'Cluster cdhMRv2cluster has not been deleted!')
+         #Try to get this cluster by its name, and check whether it's none or not.
+        try:
+            api.clusters.get('cdhMRv2cluster')
+        except Exception:
+            True
+        else:
+            False
 
 
 

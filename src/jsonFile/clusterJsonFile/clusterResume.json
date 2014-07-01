@@ -2,7 +2,7 @@
        "name": "resume",
        "type": "HDFS_MAPRED",
        "specFile" : True,
-       "rpNames":["xfu"],
+       "rpNames":["rpCreate"],
        "networkConfig": {"MGT_NETWORK": ["dhcpNetwork"]},
        "nodeGroups":
        [

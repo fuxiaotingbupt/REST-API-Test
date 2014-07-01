@@ -1,31 +1,30 @@
 __author__ = 'xfu'
 #!/usr/bin/env python
 # testDistro.py -- Distro related test cases
-from src.testcode.common import bde_api_helper
-from src.testcode.common import Constants
-import logging
 import unittest
+from src.testcode.common.testBase import TestBase
 
 
-#Configure logging
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-logger.addHandler(logging.StreamHandler())
-# initialize API helper
-api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
+class DistroTest(unittest.TestCase, TestBase):
+    '''
+    Configure logging and Initialize API connection
+    '''
+    testBaseInstance = TestBase()
+    logger = testBaseInstance.setLogger()
+    api = testBaseInstance.initializeAPI()
 
-class DistroTest(unittest.TestCase):
     def testAgetAllDistros(self):
         '''
         Get all distros' information
         '''
-        distros = api.distros.getAll()
-        logger.info(distros)
+        distros = self.api.distros.getAll()
+        self.logger.info(distros)
         self.assertTrue(len(distros) != 0)
+
     def testBgetDistroByName(self):
         '''
         Get one distro's detail information by its name.
         '''
-        distroGeted = api.distros.get('apache')
-        logger.info(distroGeted)
-        self.assertIsNotNone(distroGeted,'There is no distro named with apache')
+        distroGeted = self.api.distros.get('apache')
+        self.logger.info(distroGeted)
+        self.assertIsNotNone(distroGeted, 'There is no distro named with apache')
