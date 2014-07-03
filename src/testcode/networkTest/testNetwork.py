@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # testNetwork.py -- Network related test cases
 from src.testcode.common import bde_api_helper
-from src.testcode.common import constants
+from src.testcode.common import Constants
 import unittest
 import logging
 import json
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler())
 # initialize API helper
-api = bde_api_helper.Connection(constants.SERENGETI_SERVER_IP, '8443')
+api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
 
 
 class NetworkTest(unittest.TestCase):

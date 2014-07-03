@@ -2,13 +2,13 @@ __author__ = 'xfu'
 #!/usr/bin/env python
 # testBase.py
 from src.testcode.common import bde_api_helper
-from src.testcode.common import constants
+from src.testcode.common import Constants
 import logging
 
 
 
 # initialize API helper
-api = bde_api_helper.Connection(constants.SERENGETI_SERVER_IP, '8443')
+api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
 
 
 class TestBase():
@@ -21,7 +21,7 @@ class TestBase():
 
     #initialize API helper
     def initializeAPI(self):
-        api = bde_api_helper.Connection(constants.SERENGETI_SERVER_IP, '8443')
+        api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
         return api
 
     def getJsonFile(self, jsonFile):

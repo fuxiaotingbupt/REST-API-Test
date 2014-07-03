@@ -2,7 +2,7 @@
 # testParam.py -- Change elasticity mode, IO priority, and maximum or minimum number of powered on compute nodes under auto mode.
 import unittest
 import logging
-from src.testcode.common import bde_api_helper, constants
+from src.testcode.common import bde_api_helper, Constants
 
 #Configure logging
 logger = logging.getLogger(__name__)
@@ -10,7 +10,7 @@ logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler())
 
 # initialize API helper
-api = bde_api_helper.Connection(constants.SERENGETI_SERVER_IP, '8443')
+api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
 clusterName = 'cdhMRv1cluster'
 
 

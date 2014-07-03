@@ -2,7 +2,7 @@ __author__ = 'xfu'
 #!/usr/bin/env python
 # testDatastore.py -- Datastore related test cases
 from src.testcode.common import bde_api_helper
-from src.testcode.common import constants
+from src.testcode.common import Constants
 from src.testcode.common.testBase import TestBase
 import unittest
 
