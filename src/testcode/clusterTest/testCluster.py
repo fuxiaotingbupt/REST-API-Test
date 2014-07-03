@@ -17,7 +17,7 @@ class ClusterTest(unittest.TestCase):
     def setUp(self):
         self.createJsonFileList = ["../../jsonFile/clusterJsonFile/clusterMRv1Create.json",
                                    "../../jsonFile/clusterJsonFile/clusterMRv2Create.json"]
-
+    @unittest.skipUnless(Constants.MapReduce_Version!='Mapr','Mapr is different from MRv1 and MRv2')
     def testAcreate(self):
         '''
         Create a default cluster!

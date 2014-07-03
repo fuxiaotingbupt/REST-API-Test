@@ -2,15 +2,16 @@
 
 import unittest
 import sys
-
 from src.testcode.clusterTest.testCluster import ClusterTest
 from src.testcode.simpleTest.testDistro import DistroTest
+from src.testcode.simpleTest.testVersion import VersionTest
+from src.testcode.simpleTest.testRack import RackTest
 import HTMLTestRunner
 
 
 def suite():
    suite = unittest.TestSuite()
-   test_cases = [DistroTest]
+   test_cases = [DistroTest,VersionTest,RackTest]
    for testcase in test_cases:
        tests = unittest.TestLoader().loadTestsFromTestCase(testcase)
        suite.addTests(tests)
