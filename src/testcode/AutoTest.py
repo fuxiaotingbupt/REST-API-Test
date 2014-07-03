@@ -6,12 +6,13 @@ from src.testcode.clusterTest.testCluster import ClusterTest
 from src.testcode.simpleTest.testDistro import DistroTest
 from src.testcode.simpleTest.testVersion import VersionTest
 from src.testcode.simpleTest.testRack import RackTest
+from src.testcode.networkTest.testNetwork import NetworkTest
 import HTMLTestRunner
 
 
 def suite():
    suite = unittest.TestSuite()
-   test_cases = [DistroTest,VersionTest,RackTest]
+   test_cases = [DistroTest,VersionTest,RackTest,NetworkTest]
    for testcase in test_cases:
        tests = unittest.TestLoader().loadTestsFromTestCase(testcase)
        suite.addTests(tests)
