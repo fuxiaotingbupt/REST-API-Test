@@ -12,7 +12,7 @@ cd ${WORKSPACE}/${QE_UNTAR_NAME}
 SERENGETI_SERVER_IP=`cat aurora-bdc-connection.json |grep systemUrl |cut -d '"' -f4 |cut -d ':' -f1`
 cd $PYTHON_CODE_PATH/common/
 pwd
-sed -i "s/SERENGETI_SERVER_IP=.*/SERENGETI_SERVER_IP='${SERENGETI_SERVER_IP}'/g" $PYTHON_CODE_PATH/common/constants.py
+sed -i "s/SERENGETI_SERVER_IP=.*/SERENGETI_SERVER_IP='${SERENGETI_SERVER_IP}'/g" $PYTHON_CODE_PATH/common/Constants.py
 #VC_USERNAME should be base64 encoded.
 #VC_USERNAME =
 #VC_PASSWORD =
