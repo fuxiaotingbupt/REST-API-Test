@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 set -e
 
 QE_UNTAR_NAME="aurora-qe-test"
