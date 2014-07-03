@@ -15,9 +15,9 @@ SERENGETI_SERVER_IP=`cat aurora-bdc-connection.json |grep systemUrl |cut -d '"' 
 cd $PYTHON_CODE_PATH/common/
 sed -i "s/SERENGETI_SERVER_IP=.*/SERENGETI_SERVER_IP='${SERENGETI_SERVER_IP}'/g" $CONSTANTSFILE
 #change all distro in clusterCreate json files.
-if ["$Distro" != "Mapr"];
+if [ "$Distro" != "Mapr" ];
 then
-   for file in ${WORKSPACE}/src/jsonfile/clusterJsonFile/*;
+   for file in ${WORKSPACE}/src/jsonFile/clusterJsonFile/*;
      do
        sed -i "s/\"distro\":.*/\"distro\":\"${Distro}\"/g" $file
      done
