@@ -2,7 +2,6 @@
 set -e
 
 QE_UNTAR_NAME="aurora-qe-test"
-WORKSPACE="/Users/xfu/PycharmProjects/REST-API-Test"
 PYTHON_CODE_PATH="${WORKSPACE}/src/testcode
 #Set python path
 export PYTHONPATH=${WORKSPACE}
