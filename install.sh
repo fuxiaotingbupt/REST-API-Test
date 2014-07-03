@@ -7,8 +7,6 @@ WORKSPACE=/var/lib/jenkins/workspace/SmokeN-RESTAPI-Apache
 QE_UNTAR_NAME="aurora-qe-test"
 PYTHON_CODE_PATH="${WORKSPACE}/src/testcode"
 CONSTANTSFILE="$PYTHON_CODE_PATH/common/Constants.py"
-#Set python path
-export PYTHONPATH=${WORKSPACE}
 
 #Get serengeti server ip and vc username/password from aurora-bdc-connection.json
 cd ${WORKSPACE}/${QE_UNTAR_NAME}
@@ -17,7 +15,7 @@ SERENGETI_SERVER_IP=`cat aurora-bdc-connection.json |grep systemUrl |cut -d '"' 
 cd $PYTHON_CODE_PATH/common/
 sed -i "s/SERENGETI_SERVER_IP=.*/SERENGETI_SERVER_IP='${SERENGETI_SERVER_IP}'/g" $CONSTANTSFILE
 #change all distro in clusterCreate json files.
-if ["$Distro" == "Mapr"];
+if ["$Distro" != "Mapr"];
 then
    for file in ${WORKSPACE}/src/jsonfile/clusterJsonFile/*;
      do
@@ -33,4 +31,6 @@ fi
 
 #Execute rest api test cases
 cd $PYTHON_CODE_PATH
+#Set python path
+export PYTHONPATH=${WORKSPACE}
 python AutoTest.py
