@@ -2,7 +2,7 @@
 # testCluster.py -- Cluster related test cases
 import unittest
 import logging
-from src.testcode.common import bde_api_helper, Constants
+from src.testcode.common import bde_api_helper, constants
 
 #Configure logging
 logger = logging.getLogger(__name__)
@@ -10,7 +10,7 @@ logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler())
 
 # initialize API helper
-api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
+api = bde_api_helper.Connection(constants.SERENGETI_SERVER_IP, '8443')
 
 
 class ClusterTest(unittest.TestCase):

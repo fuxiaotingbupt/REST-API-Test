@@ -2,7 +2,7 @@ __author__ = 'xfu'
 #!/usr/bin/env python
 # testResourcePool.py -- ResourcePool related test cases
 from src.testcode.common import bde_api_helper
-from src.testcode.common import Constants
+from src.testcode.common import constants
 import unittest
 import logging
 
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler())
 # initialize API helper
-api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
+api = bde_api_helper.Connection(constants.SERENGETI_SERVER_IP, '8443')
 
 
 class ResourcePoolTest(unittest.TestCase):

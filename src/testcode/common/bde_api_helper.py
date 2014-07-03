@@ -10,7 +10,7 @@ import restHelper
 
 
 #Configure logging
-from src.testcode.common import Constants
+from src.testcode.common import constants
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -18,7 +18,7 @@ logger.addHandler(logging.StreamHandler())
 
 
 class Connection():
-    def __init__(self, hostname, port, username=Constants.VC_USERNAME, password=Constants.VC_PASSWORD):
+    def __init__(self, hostname, port, username=constants.VC_USERNAME, password=constants.VC_PASSWORD):
         '''
         Initialize connection to REST API
         '''
