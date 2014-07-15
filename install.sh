@@ -3,7 +3,7 @@
 #Usage:./install.sh
 set -e
 echo $REST_API_Features
-WORKSPACE=/var/lib/jenkins/workspace/SmokeN-RESTAPI-Apache
+WORKSPACE=/var/lib/jenkins/workspace/SmokeN-RESTAPI-CDH
 QE_UNTAR_NAME="aurora-qe-test"
 PYTHON_CODE_PATH="${WORKSPACE}/src/testcode"
 CONSTANTSFILE="$PYTHON_CODE_PATH/common/Constants.py"
