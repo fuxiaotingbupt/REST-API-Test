@@ -23,7 +23,7 @@ class ScaleTest(unittest.TestCase):
         Create a default cluster!
         '''
         global clusterTodo
-        createJsonFile = "../../jsonFile/clusterJsonFile/clusterMRv1Create.json"
+        createJsonFile = "../jsonFile/clusterJsonFile/clusterMRv1Create.json"
         createJsonFileToRead = open(createJsonFile)
         try:
             strObject = createJsonFileToRead.read()

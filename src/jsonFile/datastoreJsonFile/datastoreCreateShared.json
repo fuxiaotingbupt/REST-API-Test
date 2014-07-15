@@ -1,7 +1,7 @@
 {
   "name": "dssharedTest",
   "spec": [
-    "LUN-42",
+    "bdc-qe-lun0",
   ],
   "type": "SHARED"
 }

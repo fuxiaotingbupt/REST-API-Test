@@ -20,7 +20,7 @@ class ParamTest(unittest.TestCase):
         '''
         Create a default cluster!
         '''
-        createJsonFile = "../../jsonFile/clusterJsonFile/clusterMRv1Create.json"
+        createJsonFile = "../jsonFile/clusterJsonFile/clusterMRv1Create.json"
         createJsonFileToRead = open(createJsonFile)
         try:
             strObject = createJsonFileToRead.read()

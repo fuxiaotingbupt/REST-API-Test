@@ -1,10 +1,10 @@
 {
   "name": "dslocalTest",
   "spec": [
-    "bdcqe007-*",
-    "bdcqe010-*",
-    "bdcqe020-*",
-    "bdcqe021-*"
+    "bdcqe011-*",
+    "bdcqe012-*",
+    "bdcqe013-*",
+    "bdcqe014-*"
   ],
   "type": "LOCAL"
 }

@@ -8,6 +8,8 @@ QE_UNTAR_NAME="aurora-qe-test"
 PYTHON_CODE_PATH="${WORKSPACE}/src/testcode"
 CONSTANTSFILE="$PYTHON_CODE_PATH/common/Constants.py"
 
+#Set python path
+export PYTHONPYTH="${WORKSPACE}/src"
 #Get serengeti server ip and vc username/password from aurora-bdc-connection.json
 cd ${WORKSPACE}/${QE_UNTAR_NAME}
 

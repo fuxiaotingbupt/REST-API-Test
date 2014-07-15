@@ -20,7 +20,7 @@ class ResourcePoolTest(unittest.TestCase):
         '''
         Create a resourcepool. And get this resourcepool information by its name.
         '''
-        createJsonFile= open("../../jsonFile/resourcepoolJsonFile/rpCreate.json")
+        createJsonFile= open("../jsonFile/resourcepoolJsonFile/rpCreate.json")
         try:
 
             strObject = createJsonFile.read()
@@ -61,7 +61,7 @@ class ResourcePoolTest(unittest.TestCase):
         '''
         Create a resourcepool for other test.
         '''
-        createJsonFile= open("../../jsonFile/resourcepoolJsonFile/rpCreate.json")
+        createJsonFile= open("../jsonFile/resourcepoolJsonFile/rpCreate.json")
         try:
 
             strObject = createJsonFile.read()

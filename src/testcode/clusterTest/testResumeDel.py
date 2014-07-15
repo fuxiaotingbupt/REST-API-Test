@@ -19,7 +19,7 @@ class ResumeTest(unittest.TestCase):
         '''
         Create a small datastore
         '''
-        datastoreCreatedFile = open("../../jsonFile/datastoreJsonFile/datastoreCreateSmall.json")
+        datastoreCreatedFile = open("../jsonFile/datastoreJsonFile/datastoreCreateSmall.json")
         try:
             strObject = datastoreCreatedFile.read()
             #Generate str to dic
@@ -35,7 +35,7 @@ class ResumeTest(unittest.TestCase):
         '''
         Create a cluster with large local datastore.
         '''
-        createJsonFileToRead = open("../../jsonFile/clusterJsonFile/clusterResume.json")
+        createJsonFileToRead = open("../jsonFile/clusterJsonFile/clusterResume.json")
         try:
             strObject = createJsonFileToRead.read()
             #Generate str to dic

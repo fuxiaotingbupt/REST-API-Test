@@ -1,9 +1,9 @@
 {
        "name": "resume",
        "type": "HDFS_MAPRED",
-       "specFile" : True,
+       "specFile" : "true",
        "rpNames":["rpCreate"],
-       "networkConfig": {"MGT_NETWORK": ["dhcpNetwork"]},
+       "networkConfig": {"MGT_NETWORK": ["dhcpNetworkTest"]},
        "nodeGroups":
        [
            {
@@ -23,7 +23,7 @@
                "cpuNum": 2,
                "memCapacityMB": 7500,
                "swapRatio": 1,
-               "haFlag": "on",
+               "haFlag": "on"
            },
            {
                "name": "worker",
@@ -42,7 +42,7 @@
                "cpuNum": 2,
                "memCapacityMB": 5000,
                "swapRatio": 1,
-               "haFlag": "off",
+               "haFlag": "off"
            },
            {
                "name": "client",

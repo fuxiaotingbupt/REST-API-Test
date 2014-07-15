@@ -2,15 +2,22 @@
 
 import unittest
 import sys
-from src.testcode.clusterTest.testCluster import ClusterTest
 from src.testcode.simpleTest.testDistro import DistroTest
 from src.testcode.simpleTest.testVersion import VersionTest
+from src.testcode.simpleTest.testRack import RackTest
+from src.testcode.resourcepoolTest.testResourcePool import ResourcePoolTest
+from src.testcode.networkTest.testNetwork import NetworkTest
+from src.testcode.clusterTest.testResumeDel import ResumeTest
+from src.testcode.datastoreTest.testDatastore import DatastoreTest
+from src.testcode.clusterTest.testScale import ScaleTest
+from src.testcode.paramTest.testParam import ParamTest
+from src.testcode.clusterTest.testCluster import ClusterTest
 import HTMLTestRunner
 
 
 def suite():
    suite = unittest.TestSuite()
-   test_cases = [DistroTest,VersionTest]
+   test_cases = [DistroTest,VersionTest,RackTest,ResourcePoolTest,NetworkTest,ResumeTest,DatastoreTest,ScaleTest,ParamTest,ClusterTest]
    for testcase in test_cases:
        tests = unittest.TestLoader().loadTestsFromTestCase(testcase)
        suite.addTests(tests)

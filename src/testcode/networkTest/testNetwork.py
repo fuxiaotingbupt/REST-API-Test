@@ -19,7 +19,7 @@ class NetworkTest(unittest.TestCase):
         '''
         Create a dhcp network. And get this network information by its name.
         '''
-        createJsonFileDHCP = open("../../jsonFile/networkJsonFile/networkCreateDHCP.json")
+        createJsonFileDHCP = open("../jsonFile/networkJsonFile/networkCreateDHCP.json")
         try:
 
             strObject = createJsonFileDHCP.read()
@@ -38,7 +38,7 @@ class NetworkTest(unittest.TestCase):
         '''
         Create a  static network.
         '''
-        createJsonFileStatic = open("../../jsonFile/networkJsonFile/networkCreateStatic.json")
+        createJsonFileStatic = open("../jsonFile/networkJsonFile/networkCreateStatic.json")
         try:
 
             strObject = createJsonFileStatic.read()
@@ -65,7 +65,7 @@ class NetworkTest(unittest.TestCase):
         '''
         Add ips into an existing BDE network.
         '''
-        updateJsonFile = open("../../jsonFile/networkJsonFile/networkUpdate.json")
+        updateJsonFile = open("../jsonFile/networkJsonFile/networkUpdate.json")
         try:
 
             strObject = updateJsonFile.read()
@@ -94,7 +94,7 @@ class NetworkTest(unittest.TestCase):
         Delete a network
         '''
         #Create a dhcp network and delete it
-        createJsonFileDHCP = open("../../jsonFile/networkJsonFile/networkCreateForDelete.json")
+        createJsonFileDHCP = open("../jsonFile/networkJsonFile/networkCreateForDelete.json")
         try:
 
             strObject = createJsonFileDHCP.read()

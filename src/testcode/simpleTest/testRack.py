@@ -19,7 +19,7 @@ class RackTest(unittest.TestCase):
     Store rack list information into BDE for rack related support, such as hadoop rack awareness and node placement policies.
     '''
     def testAputRacks(self):
-        putJsonFile = open("../../jsonFile/rackJsonFile/rackPut.json")
+        putJsonFile = open("../jsonFile/rackJsonFile/rackPut.json")
         try:
             strObject = putJsonFile.read()
             #Generate str to dic

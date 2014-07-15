@@ -15,7 +15,7 @@ api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
 
 class ClusterTest(unittest.TestCase):
     def setUp(self):
-        self.createJsonFileList = ["../../jsonFile/clusterJsonFile/clusterMRv1Create.json",
+        self.createJsonFileList = [
                                    "../../jsonFile/clusterJsonFile/clusterMRv2Create.json"]
     @unittest.skipUnless(Constants.MapReduce_Version!='Mapr','Mapr is different from MRv1 and MRv2')
     def testAcreate(self):

@@ -18,7 +18,7 @@ class DatastoreTest(unittest.TestCase):
         '''
         Create a local datastore. And get this datastore information by its name.
         '''
-        createJsonFile = self.testBaseInstance.getJsonFile("../../jsonFile/datastoreJsonFile/datastoreCreateLocal.json")
+        createJsonFile = self.testBaseInstance.getJsonFile("../jsonFile/datastoreJsonFile/datastoreCreateLocal.json")
         instanceName = createJsonFile['name']
         dsCreated = self.api.datastores.create(createJsonFile)
         # Get a datastore information by its name.
@@ -30,7 +30,7 @@ class DatastoreTest(unittest.TestCase):
         '''
         Create a shared datastore.
         '''
-        createJsonFile = open("../../jsonFile/datastoreJsonFile/datastoreCreateShared.json")
+        createJsonFile = open("../jsonFile/datastoreJsonFile/datastoreCreateShared.json")
         try:
 
             strObject = createJsonFile.read()
@@ -72,7 +72,7 @@ class DatastoreTest(unittest.TestCase):
         '''
         Create a datastore for other test.
         '''
-        createJsonFile = open("../../jsonFile/datastoreJsonFile/datastoreCreateLocal.json")
+        createJsonFile = open("../jsonFile/datastoreJsonFile/datastoreCreateLocal.json")
         try:
 
             strObject = createJsonFile.read()
