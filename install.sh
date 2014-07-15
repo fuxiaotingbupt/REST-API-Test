@@ -32,5 +32,5 @@ fi
 #Execute rest api test cases
 cd $PYTHON_CODE_PATH
 #Set python path
-export PYTHONPATH="${WORKSPACE}/src"
+export PYTHONPATH="${WORKSPACE}/"
 python AutoTest.py
