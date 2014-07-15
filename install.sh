@@ -8,8 +8,6 @@ QE_UNTAR_NAME="aurora-qe-test"
 PYTHON_CODE_PATH="${WORKSPACE}/src/testcode"
 CONSTANTSFILE="$PYTHON_CODE_PATH/common/Constants.py"
 
-#Set python path
-export PYTHONPYTH="${WORKSPACE}/src"
 #Get serengeti server ip and vc username/password from aurora-bdc-connection.json
 cd ${WORKSPACE}/${QE_UNTAR_NAME}
 
@@ -34,5 +32,5 @@ fi
 #Execute rest api test cases
 cd $PYTHON_CODE_PATH
 #Set python path
-export PYTHONPATH=${WORKSPACE}
+export PYTHONPATH="${WORKSPACE}/src"
 python AutoTest.py
