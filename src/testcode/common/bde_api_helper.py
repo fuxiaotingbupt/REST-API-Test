@@ -39,6 +39,7 @@ class Connection():
         self.distros = Distro(self)
         self.versions = Version(self)
         self.racks = Rack(self)
+        self.appManagers = AppManager(self)
 
 
 class BasicAPI(object):
@@ -299,3 +300,7 @@ class Rack(CommonAPI):
 
     def put(self, putfields):
         return self._putRack(putfields)
+
+class AppManager(CommonAPI):
+    def __init__(self,connection):
+        super(AppManager,self).__init__(connection,'appmanager')

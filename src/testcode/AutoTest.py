@@ -17,7 +17,7 @@ import HTMLTestRunner
 
 def suite():
    suite = unittest.TestSuite()
-   test_cases = [DistroTest,VersionTest,RackTest,ResourcePoolTest,NetworkTest,ResumeTest,DatastoreTest,ScaleTest,ParamTest,ClusterTest]
+   test_cases = [DistroTest,VersionTest,RackTest,ResourcePoolTest,NetworkTest,ResumeTest,DatastoreTest,ParamTest,ScaleTest,ClusterTest]
    for testcase in test_cases:
        tests = unittest.TestLoader().loadTestsFromTestCase(testcase)
        suite.addTests(tests)
