@@ -11,7 +11,7 @@ logger.addHandler(logging.StreamHandler())
 
 # initialize API helper
 api = bde_api_helper.Connection(Constants.SERENGETI_SERVER_IP, '8443')
-clusterName = 'cdhMRv1cluster'
+clusterName = 'MRv1DCcluster'
 
 
 class ParamTest(unittest.TestCase):
@@ -20,7 +20,7 @@ class ParamTest(unittest.TestCase):
         '''
         Create a default cluster!
         '''
-        createJsonFile = "../jsonFile/clusterJsonFile/clusterMRv1Create.json"
+        createJsonFile = "../jsonFile/clusterJsonFile/clusterMRv1DCCreate.json"
         createJsonFileToRead = open(createJsonFile)
         try:
             strObject = createJsonFileToRead.read()

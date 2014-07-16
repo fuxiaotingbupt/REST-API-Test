@@ -1,0 +1,85 @@
+{
+   "name": "MRv1DCcluster",
+   "type": "HDFS_MAPRED",
+   "specFile": "true",
+   "rpNames": [
+      "rpCreate"
+   ],
+   "networkConfig": {
+      "MGT_NETWORK": [
+         "dhcpNetworkTest"
+      ]
+   },
+   "appManager": "Default",
+   "nodeGroups": [
+      {
+         "name": "master",
+         "roles": [
+            "hadoop_namenode",
+            "hadoop_jobtracker"
+         ],
+         "instanceNum": 1,
+         "instanceType": "MEDIUM",
+         "storage": {
+            "type": "shared",
+            "sizeGB": 50
+         },
+         "cpuNum": 2,
+         "memCapacityMB": 7500,
+         "swapRatio": 1,
+         "haFlag": "on"
+      },
+      {
+         "name": "data",
+         "roles": [
+            "hadoop_datanode"
+         ],
+         "instanceNum": 2,
+         "instanceType": "SMALL",
+         "storage": {
+            "type": "local",
+            "sizeGB": 50
+         },
+         "cpuNum": 2,
+         "memCapacityMB": 5000,
+         "swapRatio": 1,
+         "haFlag": "off"
+      },
+      {
+         "name": "compute",
+         "roles": [
+            "hadoop_tasktracker"
+         ],
+         "instanceNum": 2,
+         "instanceType": "SMALL",
+         "storage": {
+            "type": "local",
+            "sizeGB": 50
+         },
+         "cpuNum": 2,
+         "memCapacityMB": 5000,
+         "swapRatio": 1,
+         "haFlag": "off"
+      },
+      {
+         "name": "client",
+         "roles": [
+            "hadoop_client",
+            "pig",
+            "hive",
+            "hive_server"
+         ],
+         "instanceNum": 1,
+         "instanceType": "SMALL",
+         "storage": {
+            "type": "shared",
+            "sizeGB": 50
+         },
+         "cpuNum": 1,
+         "memCapacityMB": 3748,
+         "swapRatio": 1,
+         "haFlag": "off"
+      }
+   ],
+   "distro": "cdh"
+}

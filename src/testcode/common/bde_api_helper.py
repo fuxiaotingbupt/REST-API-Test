@@ -188,6 +188,21 @@ class CommonAPI(BasicAPI):
     def delete(self, instanceName):
         return self._delete(self._instanceUrl(instanceName))
 
+    #Appmanager related operations
+    def getAppmangerTypes(self, url):
+        return self._get(self._appmanagerTypesUrl())
+
+    def getAppmanagerDistros(self, url, instanceName):
+        return self._get(self._appmanagerDistrosUrl(instanceName))
+
+    def getAppmanagerDistroConf(self, url, instanceName, distroName):
+        return self._get(self._appmanagerDistroConfUrl(instanceName, distroName))
+
+    def getAppmanagerDistroRoles(self, url, instanceName, distroName):
+        return self._get(self._appmanagerDistroRoleUrl(instanceName, distroName))
+
+    #Construct all special URLs
+
     def _collectionURL(self):
         return self.urlbase + 's'
 
@@ -205,6 +220,18 @@ class CommonAPI(BasicAPI):
 
     def _paramUrl(self, instanceName, param):
         return self.urlbase + '/' + instanceName + '/' + param
+
+    def _appmanagerTypesUrl(self):
+        return self.urlbase + 's' + '/' + 'types'
+
+    def _appmanagerDistrosUrl(self, instanceName):
+        return self.urlbase + '/' + instanceName + '/' + 'distros'
+
+    def _appmanagerDistroConfUrl(self, instanceName, distroName):
+        return self.urlbase + '/' + instanceName + '/' + 'distro' + '/' + distroName + '/' + 'configurations'
+
+    def _appmanagerDistroRoleUrl(self, instanceName, distroName):
+        return self.urlbase + '/' + instanceName + '/' + 'distro' + '/' + distroName + '/' + 'roles'
 
 
 class Task(CommonAPI):
@@ -301,6 +328,7 @@ class Rack(CommonAPI):
     def put(self, putfields):
         return self._putRack(putfields)
 
+
 class AppManager(CommonAPI):
-    def __init__(self,connection):
-        super(AppManager,self).__init__(connection,'appmanager')
+    def __init__(self, connection):
+        super(AppManager, self).__init__(connection, 'appmanager')
