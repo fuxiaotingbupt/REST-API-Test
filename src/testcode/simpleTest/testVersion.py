@@ -21,4 +21,4 @@ class VersionTest(unittest.TestCase):
         '''
         version = api.versions.getVersion()
         logger.info(version)
-        self.assertTrue(version=='2.1.0','REST API version is not 2.0.0')
+        self.assertTrue(version=='2.1.0','REST API version is not 2.1.0')
