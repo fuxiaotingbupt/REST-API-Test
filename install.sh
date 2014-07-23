@@ -33,4 +33,12 @@ fi
 cd $PYTHON_CODE_PATH
 #Set python path
 export PYTHONPATH="${WORKSPACE}/"
-python AutoTest.py
+#Run smoketest or whole test suite
+if ['${TestSuite}'='SmokeTest'];
+then
+   echo 'Execute smoke test!'
+   python smoketest.py
+else
+   echo 'Execute whole test suite!'
+   python AutoTest.py
+fi
