@@ -277,7 +277,7 @@ def suite():
 
 
 if __name__ == '__main__':
-    fp = file('resttest_smoke_report.html', 'wb')
+    fp = file('resttest_report.html', 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=fp, verbosity=2, title='REST API TEST RESULT',
         description='This report is for REST API test status.',
