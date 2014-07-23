@@ -11,7 +11,8 @@ class SmokeTest(unittest.TestCase, TestBase):
     '''
     Smoke Test related test cases!
     '''
-
+    #ClusterName
+    cluster_name = ''
     @classmethod
     def setUp(self):
         '''
@@ -20,7 +21,6 @@ class SmokeTest(unittest.TestCase, TestBase):
         testBaseInstance = TestBase()
         self.logger = testBaseInstance.setLogger()
         self.api = testBaseInstance.initializeAPI()
-        self.clusterName = ''
 
     def testAaddgetRP(self):
         '''
@@ -89,10 +89,10 @@ class SmokeTest(unittest.TestCase, TestBase):
         '''
         resizeNum = 3
         clusters = self.api.clusters.getAll()
-        self.clusterName = clusters[0]['name']
-        self.api.clusters.scale(self.clusterName, 'worker', 'instancenum', resizeNum)
+        SmokeTest.cluster_name = clusters[0]['name']
+        self.api.clusters.scale(self.cluster_name, 'worker', 'instancenum', resizeNum)
         #Verify whether node group is resized successfully.
-        cluster = self.api.clusters.get(self.clusterName)
+        cluster = self.api.clusters.get(self.cluster_name)
         nodegroups = cluster['nodeGroups']
         for nodegroup in nodegroups:
             if nodegroup['name'] == 'worker':
@@ -109,13 +109,13 @@ class SmokeTest(unittest.TestCase, TestBase):
         '''
         cpuNumberUp = 3
         putFields = {
-            "clusterName": self.clusterName,
+            "clusterName": self.cluster_name,
             "nodeGroupName": 'worker',
             "cpuNumber": cpuNumberUp
         }
-        self.api.clusters.scale(self.clusterName, 'worker', 'scale', putFields)
+        self.api.clusters.scale(self.cluster_name, 'worker', 'scale', putFields)
         #Verify whether cpu is scaled up.
-        cluster = self.api.clusters.get(self.clusterName)
+        cluster = self.api.clusters.get(self.cluster_name)
         nodegroups = cluster['nodeGroups']
         for nodegroup in nodegroups:
             if nodegroup['name'] == 'worker':
@@ -132,13 +132,13 @@ class SmokeTest(unittest.TestCase, TestBase):
         '''
         cpuNumberDown = 1
         putFields = {
-            "clusterName": self.clusterName,
+            "clusterName": self.cluster_name,
             "nodeGroupName": 'worker',
             "cpuNumber": cpuNumberDown
         }
-        self.api.clusters.scale(self.clusterName, 'worker', 'scale', putFields)
+        self.api.clusters.scale(self.cluster_name, 'worker', 'scale', putFields)
         #Verify whether cpu is scaled down.
-        cluster = self.api.clusters.get(self.clusterName)
+        cluster = self.api.clusters.get(self.cluster_name)
         nodegroups = cluster['nodeGroups']
         for nodegroup in nodegroups:
             if nodegroup['name'] == 'worker':
@@ -155,13 +155,13 @@ class SmokeTest(unittest.TestCase, TestBase):
         '''
         memUp = 4000
         putfields = {
-            "clusterName": self.clusterName,
+            "clusterName": self.cluster_name,
             "nodeGroupName": 'client',
             "memory": memUp
         }
-        self.api.clusters.scale(self.clusterName, 'client', 'scale', putfields)
+        self.api.clusters.scale(self.cluster_name, 'client', 'scale', putfields)
         #Verify whether mem is scaled up successfully.
-        cluster = self.api.clusters.get(self.clusterName)
+        cluster = self.api.clusters.get(self.cluster_name)
         nodegroups = cluster['nodeGroups']
         for nodegroup in nodegroups:
             if nodegroup['name'] == 'client':
@@ -178,13 +178,13 @@ class SmokeTest(unittest.TestCase, TestBase):
         '''
         memDown = 4000
         putfields = {
-            "clusterName": self.clusterName,
+            "clusterName": self.cluster_name,
             "nodeGroupName": 'worker',
             "memory": memDown
         }
-        self.api.clusters.scale(self.clusterName, 'worker', 'scale', putfields)
+        self.api.clusters.scale(self.cluster_name, 'worker', 'scale', putfields)
         #Verify whether mem is scaled down successfully.
-        cluster = self.api.clusters.get(self.clusterName)
+        cluster = self.api.clusters.get(self.cluster_name)
         nodegroups = cluster['nodeGroups']
         for nodegroup in nodegroups:
             if nodegroup['name'] == 'worker':
@@ -262,7 +262,7 @@ class SmokeTest(unittest.TestCase, TestBase):
         '''
         rps = self.api.resourcepools.getAll()
         for rp in rps:
-            self.api.resourcepools.delete(rp['name'])
+            self.api.resourcepools.delete(rp['rpName'])
         rpsAll = self.api.resourcepools.getAll()
         self.assertTrue(len(rpsAll) == 0)
 
