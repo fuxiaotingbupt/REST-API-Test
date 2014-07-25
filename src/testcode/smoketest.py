@@ -30,7 +30,7 @@ class SmokeTest(unittest.TestCase, TestBase):
         rpdicObject = self.getJsonFile("../jsonFile/resourcepoolJsonFile/rpCreate.json")
         self.api.resourcepools.create(rpdicObject)
         #get a resourcepool information by its name.
-        rpinstanceName = rpdicObject['rpName']
+        rpinstanceName = rpdicObject['name']
         rpGet = self.api.resourcepools.get(rpinstanceName)
         self.assertIsNotNone(rpGet, "rpCreate does not create successfully! ")
         self.logger.info(rpGet)

@@ -189,16 +189,16 @@ class CommonAPI(BasicAPI):
         return self._delete(self._instanceUrl(instanceName))
 
     #Appmanager related operations
-    def getAppmangerTypes(self, url):
+    def getAppmangerTypes(self):
         return self._get(self._appmanagerTypesUrl())
 
-    def getAppmanagerDistros(self, url, instanceName):
+    def getAppmanagerDistros(self, instanceName):
         return self._get(self._appmanagerDistrosUrl(instanceName))
 
-    def getAppmanagerDistroConf(self, url, instanceName, distroName):
+    def getAppmanagerDistroConf(self, instanceName, distroName):
         return self._get(self._appmanagerDistroConfUrl(instanceName, distroName))
 
-    def getAppmanagerDistroRoles(self, url, instanceName, distroName):
+    def getAppmanagerDistroRoles(self, instanceName, distroName):
         return self._get(self._appmanagerDistroRoleUrl(instanceName, distroName))
 
     #Construct all special URLs
@@ -332,3 +332,8 @@ class Rack(CommonAPI):
 class AppManager(CommonAPI):
     def __init__(self, connection):
         super(AppManager, self).__init__(connection, 'appmanager')
+
+    def create(self, postfields):
+        return self._create(postfields)
+
+
