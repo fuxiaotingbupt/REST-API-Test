@@ -1,6 +1,6 @@
 #!/bin/bash
 #FileName: install.sh
-#Usage:./install.sh distroName testsuite
+#Usage:./install.sh
 set -e
 WORKSPACE=/var/lib/jenkins/workspace/SmokeN-RESTAPI-CDH
 QE_UNTAR_NAME="aurora-qe-test"
@@ -14,11 +14,11 @@ SERENGETI_SERVER_IP=`cat aurora-bdc-connection.json |grep systemUrl |cut -d '"' 
 cd $PYTHON_CODE_PATH/common/
 sed -i "s/SERENGETI_SERVER_IP=.*/SERENGETI_SERVER_IP='${SERENGETI_SERVER_IP}'/g" $CONSTANTSFILE
 #change all distro in clusterCreate json files.
-if [ "$1" != "Mapr" ];
+if [ "$Distro" != "Mapr" ];
 then
    for file in ${WORKSPACE}/src/jsonFile/clusterJsonFile/*;
      do
-       sed -i "s/\"distro\":.*/\"distro\":\"$1\"/g" $file
+       sed -i "s/\"distro\":.*/\"distro\":\"$Distro\"/g" $file
      done
 else
    echo 'Need add jsonfiles for mapr creation'
@@ -33,7 +33,7 @@ cd $PYTHON_CODE_PATH
 #Set python path
 export PYTHONPATH="${WORKSPACE}/"
 #Run smoketest or whole test suite
-if [ "$2" = "SmokeTest" ];
+if [ "${TestSuite}" = "SmokeTest" ];
 then
    echo 'Execute smoke test!'
    python smoketest.py
