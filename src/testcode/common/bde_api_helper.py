@@ -23,7 +23,7 @@ class Connection():
         Initialize connection to REST API
         '''
         self.rest = restHelper.RestHelper(hostname, port)
-        self.rest.authenticateBasic(username, password)
+        #self.rest.authenticateBasic(username, password)
         self.rest.setGlobalHeaders({
             'Accept': 'application/json',
             'Content-type': 'application/json',

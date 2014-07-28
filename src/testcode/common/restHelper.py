@@ -8,6 +8,7 @@ import json
 import logging
 import time
 import urlparse
+import Constants
 
 # configure logging
 
@@ -33,7 +34,7 @@ class RestHelper:
 
     def setGlobalHeaders(self, headers):
         self.perHelperHeaders = copy.copy(headers)
-
+    # Log on and save session
     def authenticateBasic(self, username, password):
         url = 'https://' + self.hostname + ':' + self.port + '/serengeti/j_spring_security_check?j_username=' + username + '&j_password=' + password
         logger.info(url)
@@ -44,10 +45,20 @@ class RestHelper:
         response = httpConn.getresponse()
         headers = response.getheaders()
         self.authheader = dict(headers).get(('set-cookie').split(";")[0])
+    # Log out,need to do.
+    def logout(self):
+        url = 'https://' + self.hostname + ':' + self.port + '/serengeti/j_spring_security_logout'
+        logger.info(url)
+        headers = {'Content-type': 'application/json'}
+        body = None
+        httpConn = self.connectMethod(self.hostname, self.port)
+        httpConn.request(url, body, headers)
 
     def transact(self, verb, path, body=None, headers={}):
         # build combined header list
         allHeaders = copy.copy(self.perHelperHeaders)
+        #Each operation need log on once, since bug 1290897
+        self.authenticateBasic(username=Constants.VC_USERNAME, password=Constants.VC_PASSWORD)
         if hasattr(self, 'authheader'):
             allHeaders['Cookie'] = self.authheader
         for key in headers:
@@ -55,7 +66,8 @@ class RestHelper:
         # handle both relative and absolute URLs (as long as they're to same scheme://host:port/)
         path = self._relativePath(path)
         httpConn = self.connectMethod(self.hostname, self.port)
-        logger.debug('request: %s %s' % (verb, path))
+        logger.info('request: %s %s' % (verb, path))
+        logger.info('Path:' + path)
         if body is not None:
             logger.debug(body)
         httpConn.request(verb, path, body=body, headers=allHeaders)
