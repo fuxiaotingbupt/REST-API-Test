@@ -1,0 +1,8 @@
+{
+"name":"cm",
+"description":"This is ClouderaManager!",
+"type":"ClouderaManager",
+"url":"http://10.111.88.151:7180",
+"username":"admin",
+"password":"admin"
+}

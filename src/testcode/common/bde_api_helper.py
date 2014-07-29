@@ -28,7 +28,7 @@ class Connection():
             'Accept': 'application/json',
             'Content-type': 'application/json',
         })
-        self.rest.setLogLevel(logging.WARNING)
+        self.rest.setLogLevel(logging.INFO)
         #Child objects for API sub-areas
 
         self.clusters = Cluster(self)

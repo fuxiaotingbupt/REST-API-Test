@@ -54,8 +54,8 @@ class ClusterTest(unittest.TestCase):
                 if str(cluster['status']) == 'RUNNING':
                     api.clusters.action(cluster['name'], 'stop')
                     break
-                else:
-                    logger.error('There is no running cluster to stop!')
+            else:
+                logger.error('There is no running cluster to stop!')
         else:
             logger.error('There is no clusters to stop!')
 
@@ -67,8 +67,8 @@ class ClusterTest(unittest.TestCase):
                 if str(cluster['status']) == 'STOPPED':
                     api.clusters.action(cluster['name'], 'start')
                     break
-                else:
-                    logger.error('There is no stopped cluster to start!')
+            else:
+                logger.error('There is no stopped cluster to start!')
         else:
             logger.error('There is no clusters to start!')
 

@@ -52,8 +52,8 @@ class ScaleTest(unittest.TestCase):
             if nodegroup['name'] == nodegroupName:
                 nodegroupNeeded = nodegroup
                 break
-            else:
-                logger.error('There is no nodegroup ' + nodegroupName)
+        else:
+            logger.error('There is no nodegroup ' + nodegroupName)
         logger.info(nodegroupNeeded)
         self.assertTrue(nodegroupNeeded['instanceNum'] == resizeNum, 'Resize node failed!')
 
@@ -75,8 +75,8 @@ class ScaleTest(unittest.TestCase):
             if nodegroup['name'] == nodegroupName:
                 nodegroupNeeded = nodegroup
                 break
-            else:
-                logger.error('There is no nodegroup ' + nodegroupName)
+        else:
+            logger.error('There is no nodegroup ' + nodegroupName)
         logger.info(nodegroupNeeded)
         self.assertTrue(nodegroupNeeded['cpuNum'] == cpuNumberUp, 'Scale up cpu node failed!')
 
@@ -98,8 +98,8 @@ class ScaleTest(unittest.TestCase):
             if nodegroup['name'] == nodegroupName:
                 nodegroupNeeded = nodegroup
                 break
-            else:
-                logger.error('There is no nodegroup ' + nodegroupName)
+        else:
+            logger.error('There is no nodegroup ' + nodegroupName)
         logger.info(nodegroupNeeded)
         self.assertTrue(nodegroupNeeded['cpuNum'] == cpuNumberDown, 'Scale down cpu node failed!')
 
@@ -121,8 +121,8 @@ class ScaleTest(unittest.TestCase):
             if nodegroup['name'] == clientnodegroupName:
                 nodegroupNeeded = nodegroup
                 break
-            else:
-                logger.error('There is no nodegroup ' + clientnodegroupName)
+        else:
+            logger.error('There is no nodegroup ' + clientnodegroupName)
         logger.info(nodegroupNeeded)
         self.assertTrue(nodegroupNeeded['memCapacityMB'] == memUp, 'Scale up mem node failed!')
 
@@ -144,8 +144,8 @@ class ScaleTest(unittest.TestCase):
             if nodegroup['name'] == nodegroupName:
                 nodegroupNeeded = nodegroup
                 break
-            else:
-                logger.error('There is no nodegroup ' + nodegroupName)
+        else:
+            logger.error('There is no nodegroup ' + nodegroupName)
         logger.info(nodegroupNeeded)
         self.assertTrue(nodegroupNeeded['memCapacityMB'] == memDown, 'Scale down mem node failed!')
 
