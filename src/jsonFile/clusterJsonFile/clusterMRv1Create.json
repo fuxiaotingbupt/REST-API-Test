@@ -4,7 +4,7 @@
        "specFile" : "true",
        "rpNames":["rpCreate"],
        "networkConfig": {"MGT_NETWORK": ["dhcpNetworkTest"]},
-       "appManager":"Default",
+       "appManager":"cm",
        "nodeGroups":
        [
            {
