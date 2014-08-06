@@ -63,6 +63,16 @@ class SmokeTest(unittest.TestCase, TestBase):
             dsGet = self.api.datastores.get(localdsinstanceName)
             self.assertIsNotNone(dsGet, "dsTest does not create successfully! ")
             self.logger.info(dsGet)
+    def testDaddmanagers(self):
+        '''
+        Add a cloudera manager!
+        '''
+        createJsonFile = self.testBaseInstance.getJsonFile("../jsonFile/appManagerJsonFile/cmAdd.json")
+        self.api.appManagers.create(createJsonFile)
+        appmanagerName = createJsonFile['name']
+        appmanagerGet = self.api.appManagers.get(appmanagerName)
+        self.assertIsNotNone(appmanagerGet,"Appmanager cm create successfully!")
+        self.logger.info(appmanagerGet)
 
     @unittest.skipUnless(Constants.MapReduce_Version != 'Mapr', 'Mapr is different from MRv1 and MRv2')
     def testDcreateCluster(self):
