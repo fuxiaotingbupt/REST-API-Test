@@ -65,3 +65,12 @@ class AppmanagerTest(unittest.TestCase, TestBase):
         '''
         distroRoles = self.api.appManagers.getAppmanagerDistroRoles('Default', Constants.DistroName)
         self.logger.info(distroRoles)
+    def test_G_deleteAppmanager(self):
+        '''
+        Delete appmanager.
+        '''
+        self.api.appManagers.delete('cm')
+
+
+
+
