@@ -67,7 +67,7 @@ class SmokeTest(unittest.TestCase, TestBase):
         '''
         Add a cloudera manager!
         '''
-        createJsonFile = self.testBaseInstance.getJsonFile("../jsonFile/appManagerJsonFile/cmAdd.json")
+        createJsonFile = self.getJsonFile("../jsonFile/appManagerJsonFile/cmAdd.json")
         self.api.appManagers.create(createJsonFile)
         appmanagerName = createJsonFile['name']
         appmanagerGet = self.api.appManagers.get(appmanagerName)
