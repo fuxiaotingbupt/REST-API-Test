@@ -13,13 +13,14 @@ from src.testcode.clusterTest.testScale import ScaleTest
 from src.testcode.paramTest.testParam import ParamTest
 from src.testcode.clusterTest.testCluster import ClusterTest
 from src.testcode.appManagerTest.testAppmanager import AppmanagerTest
+from src.testcode.clusterTest.testHbaseOnly import HbaseOnlyTest
 import HTMLTestRunner
 
 
 def suite():
     suite = unittest.TestSuite()
     test_cases = [DistroTest, VersionTest, RackTest, ResourcePoolTest, NetworkTest, AppmanagerTest,ResumeTest, DatastoreTest,
-                  ParamTest, ScaleTest, ClusterTest]
+                  ParamTest, ScaleTest, ClusterTest,HbaseOnlyTest]
     for testcase in test_cases:
         tests = unittest.TestLoader().loadTestsFromTestCase(testcase)
         suite.addTests(tests)
