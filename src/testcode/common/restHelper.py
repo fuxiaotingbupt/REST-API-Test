@@ -36,10 +36,9 @@ class RestHelper:
         self.perHelperHeaders = copy.copy(headers)
     # Log on and save session
     def authenticateBasic(self, username, password):
-        url = 'https://' + self.hostname + ':' + self.port + '/serengeti/j_spring_security_check?j_username=' + username + '&j_password=' + password
-        logger.info(url)
-        headers = {'Content-type': 'application/json'}
-        body = None
+        url = 'https://' + self.hostname + ':' + self.port + '/serengeti/j_spring_security_check'
+        body = 'j_username='+username+'&j_password='+password
+        headers = {'Content-type': 'application/x-www-form-urlencoded'}
         httpConn = self.connectMethod(self.hostname, self.port)
         httpConn.request('POST', url, body, headers)
         response = httpConn.getresponse()

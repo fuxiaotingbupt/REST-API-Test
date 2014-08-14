@@ -43,6 +43,7 @@ class HbaseOnlyTest(unittest.TestCase):
         '''
         masterInstance = ''
         allclusters = api.clusters.getAll()
+        logger.info(allclusters[0])
         allinstances = allclusters[0]['nodeGroups']
         for instance in allinstances:
             if instance['name'] == 'master':
