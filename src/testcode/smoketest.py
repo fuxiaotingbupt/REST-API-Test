@@ -91,6 +91,7 @@ class SmokeTest(unittest.TestCase, TestBase):
         clusterinstanceName = clusterdicObject['name']
         clusterGet = self.api.clusters.get(clusterinstanceName)
         self.assertIsNotNone(clusterGet, "cluster does not create successfully! ")
+        self.assertTrue(clusterGet['status'] == 'RUNNING')
         self.logger.info(clusterGet)
 
     def testEscaleOut(self):
