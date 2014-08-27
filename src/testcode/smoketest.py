@@ -109,8 +109,8 @@ class SmokeTest(unittest.TestCase, TestBase):
             if nodegroup['name'] == 'worker':
                 nodegroupNeeded = nodegroup
                 break
-            else:
-                self.logger.error('There is no nodegroup ' + 'worker')
+        else:
+            self.logger.error('There is no nodegroup ' + 'worker')
         self.logger.info(nodegroupNeeded)
         self.assertTrue(nodegroupNeeded['instanceNum'] == resizeNum, 'Resize node failed!')
 
@@ -132,8 +132,8 @@ class SmokeTest(unittest.TestCase, TestBase):
             if nodegroup['name'] == 'worker':
                 nodegroupNeeded = nodegroup
                 break
-            else:
-                self.logger.error('There is no nodegroup ' + 'worker')
+        else:
+            self.logger.error('There is no nodegroup ' + 'worker')
         self.logger.info(nodegroupNeeded)
         self.assertTrue(nodegroupNeeded['cpuNum'] == cpuNumberUp, 'Scale up cpu node failed!')
 
@@ -155,8 +155,8 @@ class SmokeTest(unittest.TestCase, TestBase):
             if nodegroup['name'] == 'worker':
                 nodegroupNeeded = nodegroup
                 break
-            else:
-                self.logger.error('There is no nodegroup ' + 'worker')
+        else:
+            self.logger.error('There is no nodegroup ' + 'worker')
         self.logger.info(nodegroupNeeded)
         self.assertTrue(nodegroupNeeded['cpuNum'] == cpuNumberDown, 'Scale down cpu node failed!')
 
@@ -178,8 +178,8 @@ class SmokeTest(unittest.TestCase, TestBase):
             if nodegroup['name'] == 'client':
                 nodegroupNeeded = nodegroup
                 break
-            else:
-                self.logger.error('There is no nodegroup ' + 'client')
+        else:
+            self.logger.error('There is no nodegroup ' + 'client')
         self.logger.info(nodegroupNeeded)
         self.assertTrue(nodegroupNeeded['memCapacityMB'] == memUp, 'Scale up mem node failed!')
 
@@ -201,8 +201,8 @@ class SmokeTest(unittest.TestCase, TestBase):
             if nodegroup['name'] == 'worker':
                 nodegroupNeeded = nodegroup
                 break
-            else:
-                self.logger.error('There is no nodegroup ' + 'worker')
+        else:
+            self.logger.error('There is no nodegroup ' + 'worker')
         self.logger.info(nodegroupNeeded)
         self.assertTrue(nodegroupNeeded['memCapacityMB'] == memDown, 'Scale down mem node failed!')
 
@@ -231,8 +231,8 @@ class SmokeTest(unittest.TestCase, TestBase):
                 if str(cluster['status']) == 'STOPPED':
                     self.api.clusters.action(cluster['name'], 'start')
                     break
-                else:
-                    self.logger.error('There is no stopped cluster to start!')
+            else:
+                self.logger.error('There is no stopped cluster to start!')
         else:
             self.logger.error('There is no clusters to start!')
 
