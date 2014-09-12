@@ -65,13 +65,13 @@ class SmokeTest(unittest.TestCase, TestBase):
             self.logger.info(dsGet)
     def testDaddmanagers(self):
         '''
-        Add a cloudera manager!
+        Add a ambari manager!
         '''
-        createJsonFile = self.getJsonFile("../jsonFile/appManagerJsonFile/cmAdd.json")
+        createJsonFile = self.getJsonFile("../jsonFile/appManagerJsonFile/amAdd.json")
         self.api.appManagers.create(createJsonFile)
         appmanagerName = createJsonFile['name']
         appmanagerGet = self.api.appManagers.get(appmanagerName)
-        self.assertIsNotNone(appmanagerGet,"Appmanager cm create successfully!")
+        self.assertIsNotNone(appmanagerGet,"Appmanager am create successfully!")
         self.logger.info(appmanagerGet)
 
     @unittest.skipUnless(Constants.MapReduce_Version != 'Mapr', 'Mapr is different from MRv1 and MRv2')
