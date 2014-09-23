@@ -277,6 +277,18 @@ class SmokeTest(unittest.TestCase, TestBase):
         rpsAll = self.api.resourcepools.getAll()
         self.assertTrue(len(rpsAll) == 0)
 
+    def testPdeleteAppmanager(self):
+        '''
+        Delete appmanager.
+        '''
+        appmanagers = self.api.appManagers.getAll()
+        for appmanager in appmanagers:
+            self.api.appManagers.delete(appmanager['name'])
+        appmanagersAll = self.api.appManagers.getAll()
+        self.assertTrue(len(appmanagersAll) == 0)
+
+
+
 
 def suite():
     suite = unittest.TestSuite()
