@@ -283,12 +283,11 @@ class SmokeTest(unittest.TestCase, TestBase):
         '''
         appmanagers = self.api.appManagers.getAll()
         for appmanager in appmanagers:
-            self.api.appManagers.delete(appmanager['name'])
+            if appmanager['name'] != 'Default':
+                self.api.appManagers.delete(appmanager['name'])
+                break
         appmanagersAll = self.api.appManagers.getAll()
         self.assertTrue(len(appmanagersAll) == 0)
-
-
-
 
 def suite():
     suite = unittest.TestSuite()
