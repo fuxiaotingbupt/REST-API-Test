@@ -287,7 +287,7 @@ class SmokeTest(unittest.TestCase, TestBase):
                 self.api.appManagers.delete(appmanager['name'])
                 break
         appmanagersAll = self.api.appManagers.getAll()
-        self.assertTrue(len(appmanagersAll) == 0)
+        self.assertTrue(len(appmanagersAll) == 1)
 
 def suite():
     suite = unittest.TestSuite()
