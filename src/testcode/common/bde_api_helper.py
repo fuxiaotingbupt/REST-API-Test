@@ -40,6 +40,8 @@ class Connection():
         self.versions = Version(self)
         self.racks = Rack(self)
         self.appManagers = AppManager(self)
+        self.accountServers = Vmusermgmtserver(self)
+        self.mgmtvm = Vmmgmtvm(self)
 
 
 class BasicAPI(object):
@@ -202,11 +204,17 @@ class CommonAPI(BasicAPI):
         return self._get(self._appmanagerDistroRoleUrl(instanceName, distroName))
 
     #Construct all special URLs
-
+    # for usermgmt server , its post url is special
     def _collectionURL(self):
-        return self.urlbase + 's'
+        if 'usermgmtserver' in self.urlbase:
+            return self.urlbase + 's' + '?testOnly=false'
+        else:
+            return self.urlbase + 's'
 
     def _instanceUrl(self, instanceName):
+       if 'mgmtvm' in self.urlbase:
+           return self.urlbase
+       else:
         return self.urlbase + '/' + instanceName
 
     def _instanceUrlByID(self, instanceID):
@@ -335,5 +343,22 @@ class AppManager(CommonAPI):
 
     def create(self, postfields):
         return self._create(postfields)
+
+#account management server (AD/LDAP)
+class Vmusermgmtserver(CommonAPI):
+    def __init__(self,connection):
+        super(Vmusermgmtserver,self).__init__(connection,'vmconfig/usermgmtserver')
+
+class Vmmgmtvm(CommonAPI):
+    def __init__(self,connection):
+        super(Vmmgmtvm,self).__init__(connection,'vmconfig')
+#Configure Management VM
+    def put(self,putfields,instanceName = 'mgmtvm'):
+        'PUT to /serengeti/api/vmconfig/mgmtvm'
+        return self.put(instanceName,putfields)
+    def get(self,instanceName = 'mgmtvm'):
+        'GET from /serengeti/api/vmconfig/mgmtvm'
+        return self.get(instanceName)
+
 
 

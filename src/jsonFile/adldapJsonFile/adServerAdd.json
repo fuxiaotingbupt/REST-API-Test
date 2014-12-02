@@ -1,0 +1,10 @@
+{
+   "name": "ad1",
+   "type": "AD",
+   "baseGroupDn": "cn=groups,dn=vmware,dn=com",
+   "baseUserDn": "cn=users,dn=vmware,dn=com",
+   "primaryUrl": "ldaps://10.112.113.137:389",
+   "secondaryUrl": "ldaps://10.112.113.182:389",
+   "userName": "xfu",
+   "password": "ca$hc0w"
+}

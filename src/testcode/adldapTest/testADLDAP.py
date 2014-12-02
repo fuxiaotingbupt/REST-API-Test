@@ -1,0 +1,53 @@
+__author__ = 'xfu'
+#!/usr/bin/env python
+#Filename:testADLDAP.py
+import unittest
+from src.testcode.common.testBase import TestBase
+from src.testcode.common import Constants
+
+
+class ADLDAPTest(unittest.TestCase, TestBase):
+    '''
+    Configure logging and Initialize API connection
+    '''
+    testBaseInstance = TestBase()
+    logger = testBaseInstance.setLogger()
+    api = testBaseInstance.initializeAPI()
+
+    def test_A_addAccountServer(self):
+        '''
+        Add an account management server (AD/LDAP)
+        '''
+        createJsonFile = self.testBaseInstance.getJsonFile("../../jsonFile/adldapJsonFile/adServerAdd.json")
+        instanceName = createJsonFile['name']
+        self.api.accountServers.create(createJsonFile)
+        accountServerGet = self.api.accountServers.get(createJsonFile['name'])
+        if accountServerGet is not None:
+            assert True
+        else:
+            assert False
+
+    def test_B_getAccountServers(self):
+        '''
+        Get an account management server
+        '''
+        accountServers = self.api.accountServers.getAll()
+        self.logger.info(accountServers)
+
+    def test_C_confGetMgmtVM(self):
+        '''
+        Configure Management VM and get configurations.
+        '''
+        putJsonFile = self.testBaseInstance.getJsonFile("../../jsonFile/adldapJsonFile/configuremgmtvm.json")
+        self.api.mgmtvm.put(putJsonFile)
+        mgmtVMconfGet = self.api.mgmtvm.get()
+        self.assertTrue(mgmtVMconfGet['vmconfig.mgmtvm.cum.servername'] == putJsonFile['vmconfig.mgmtvm.cum.servername'])
+
+
+
+
+
+
+
+
+

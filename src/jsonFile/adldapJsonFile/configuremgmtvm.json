@@ -1,0 +1,5 @@
+{
+   "vmconfig.mgmtvm.cum.enabled": "true",
+   "vmconfig.mgmtvm.cum.servername": "ad1",
+   "vmconfig.mgmtvm.localaccountdisabled": "true"
+}
