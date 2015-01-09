@@ -2,8 +2,7 @@
    "name": "am",
    "description": "This is Ambari!",
    "type": "Ambari",
-   "url": "https://sin2-pekaurora-bdcqevlan109-68.eng.vmware.com:8443",
+   "url": "https://sin2-pekaurora-bdcqevlan89-150.eng.vmware.com:8443",
    "username": "admin",
-   "password": "admin",
-   "sslCertificate": "-----BEGIN CERTIFICATE-----\nMIIDsDCCApgCCQDAjtgEO8emzTANBgkqhkiG9w0BAQUFADCBmTELMAkGA1UEBhMC\nY2gxCzAJBgNVBAgMAmJqMQswCQYDVQQHDAJiajEMMAoGA1UECgwDc2FvMQswCQYD\nVQQLDAJxZTE2MDQGA1UEAwwtc2luMi1wZWthdXJvcmEtYmRjcWV2bGFuMTA5LTY4\nLmVuZy52bXdhcmUuY29tMR0wGwYJKoZIhvcNAQkBFg54ZnVAdm13YXJlLmNvbTAe\nFw0xNDA4MjIwNjAxMzRaFw0xNTA4MjIwNjAxMzRaMIGZMQswCQYDVQQGEwJjaDEL\nMAkGA1UECAwCYmoxCzAJBgNVBAcMAmJqMQwwCgYDVQQKDANzYW8xCzAJBgNVBAsM\nAnFlMTYwNAYDVQQDDC1zaW4yLXBla2F1cm9yYS1iZGNxZXZsYW4xMDktNjguZW5n\nLnZtd2FyZS5jb20xHTAbBgkqhkiG9w0BCQEWDnhmdUB2bXdhcmUuY29tMIIBIjAN\nBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGzjdjwfoWByz9nEOd2GKSiHT2Hk\nQAon7pNzr1hwlw4HdRpZNYmMSImKAL3wiUHijxkv9aVokbRvoGGFNQclY0A0yR5Z\nS35BqQBgGrXCHhQwiL+uqJYMaIYa6qtkbYRweOr6IVg+yNl+StGTUlchUpbDCSeX\n8kvBACVDJUIKC98NyjpfHw1Q95IRdO7u3eCrSOSKbldRb0OtXGDWFzIZGHf6+IwX\n2judpw81AT0z6dZpPOWFesXUYxLv9NO6l3WADn1wFhG/sat+EojUbTxDizycvA/t\nXOq9h3n8L+CBU6/xqDyFp4+UiNDuKx0UiHatU4MOpl+u8gq3q9z10mu94wIDAQAB\nMA0GCSqGSIb3DQEBBQUAA4IBAQAuQupxt0HwH5HMZarby2wzdjP71KZ2jTY4uyaA\nx5pwT0OwWZnVZ6GTG8VZ+mnpEL3NUFrArRFH9lGJ0tTRQT/uJWelmHmVEULMNjWk\n68rmbJZiUOH4dtTIhtNls2uix6DOh9QCi7+2bPi/ZoG/3BJ7HRS/WJJDYQ/rlntv\nStIgWsawLl1Zgl2fEg8nJKrSFp3N66CzWaceMEA76Ii5Yg9bfPMprUtfoPvkyQKD\nTL2Fep0Ml3JOcmSIq6t797MTjt7ghDEgbRVRcYl67Bc8djzOChCpZ5T+2I30kHo5\nNUmBJJ7v+8z05BDP/zzkagvAApOUnLpelnighbZH1Wt7BrCB\n-----END CERTIFICATE-----"
+   "password": "admin"
 }

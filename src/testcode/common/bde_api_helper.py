@@ -13,7 +13,7 @@ import restHelper
 from src.testcode.common import Constants
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())
 
 
@@ -28,7 +28,7 @@ class Connection():
             'Accept': 'application/json',
             'Content-type': 'application/json',
         })
-        self.rest.setLogLevel(logging.INFO)
+        self.rest.setLogLevel(logging.DEBUG)
         #Child objects for API sub-areas
 
         self.clusters = Cluster(self)
@@ -98,7 +98,7 @@ class BasicAPI(object):
         self._checkResponse(response)
         if response.status == httplib.OK:
             # Ok has no locationHeader
-            return None
+            return response
         if response.status == httplib.ACCEPTED:
             location = self.rest.getLocationHeader(response)
             task = self._getJson(location)
@@ -107,8 +107,8 @@ class BasicAPI(object):
             return self._getJson(location)
         else:
             msg = response.read()
-            assert False
-            return msg
+            logger.error(msg)
+            return response
 
     def _putJson(self, url, obj):
         data = json.dumps(obj)
@@ -207,13 +207,15 @@ class CommonAPI(BasicAPI):
     # for usermgmt server , its post url is special
     def _collectionURL(self):
         if 'usermgmtserver' in self.urlbase:
-            return self.urlbase + 's' + '?testOnly=false'
+            return self.urlbase + 's' + '?forceTrustCert=true'
         else:
             return self.urlbase + 's'
 
     def _instanceUrl(self, instanceName):
        if 'mgmtvm' in self.urlbase:
            return self.urlbase
+       elif 'usermgmt' in self.urlbase:
+           return self.urlbase + 's' + '/' + instanceName
        else:
         return self.urlbase + '/' + instanceName
 
@@ -348,6 +350,8 @@ class AppManager(CommonAPI):
 class Vmusermgmtserver(CommonAPI):
     def __init__(self,connection):
         super(Vmusermgmtserver,self).__init__(connection,'vmconfig/usermgmtserver')
+    def create(self,postfields):
+        return self._create(postfields)
 
 class Vmmgmtvm(CommonAPI):
     def __init__(self,connection):

@@ -4,6 +4,7 @@ __author__ = 'xfu'
 import unittest
 from src.testcode.common.testBase import TestBase
 from src.testcode.common import Constants
+from src.testcode.adldapTest.BDEException import BDEException
 
 
 class ADLDAPTest(unittest.TestCase, TestBase):
@@ -31,8 +32,9 @@ class ADLDAPTest(unittest.TestCase, TestBase):
         '''
         Get an account management server
         '''
-        accountServers = self.api.accountServers.getAll()
-        self.logger.info(accountServers)
+        accountServer= self.api.accountServers.get('ldapxfu')
+        self.assertIsNotNone(accountServer)
+        self.logger.info(accountServer)
 
     def test_C_confGetMgmtVM(self):
         '''
@@ -42,6 +44,20 @@ class ADLDAPTest(unittest.TestCase, TestBase):
         self.api.mgmtvm.put(putJsonFile)
         mgmtVMconfGet = self.api.mgmtvm.get()
         self.assertTrue(mgmtVMconfGet['vmconfig.mgmtvm.cum.servername'] == putJsonFile['vmconfig.mgmtvm.cum.servername'])
+#Error handling for ad/ldap server adding
+    def test_D_duplicatedName(self):
+        '''
+        Add an another ad/ldap server with a duplicated name.
+        '''
+        createJsonFile = self.testBaseInstance.getJsonFile("../../jsonFile/adldapJsonFile/adServerAdd.json")
+        instanceName = createJsonFile['name']
+        try:
+            response = self.api.accountServers.create(createJsonFile)
+            print response.read()
+            print response
+        except BDEException, e:
+            print e
+
 
 
 

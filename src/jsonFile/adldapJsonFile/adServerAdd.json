@@ -1,10 +1,9 @@
 {
-   "name": "ad1",
-   "type": "AD",
-   "baseGroupDn": "cn=groups,dn=vmware,dn=com",
-   "baseUserDn": "cn=users,dn=vmware,dn=com",
-   "primaryUrl": "ldaps://10.112.113.137:389",
-   "secondaryUrl": "ldaps://10.112.113.182:389",
-   "userName": "xfu",
-   "password": "ca$hc0w"
+  "name": "ldapxfu",
+  "type": "LDAP",
+  "baseGroupDn": "ou=groups,dc=bde,dc=vmware,dc=com",
+  "baseUserDn": "ou=users,dc=bde,dc=vmware,dc=com",
+  "primaryUrl": "ldaps://pek2-aurora-dev-01-113-dhcp137.eng.vmware.com:636",
+  "userName": "cn=Manager,dc=bde,dc=vmware,dc=com",
+  "password": "openldap"
 }

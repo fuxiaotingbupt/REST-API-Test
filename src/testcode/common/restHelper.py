@@ -13,7 +13,7 @@ import Constants
 # configure logging
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())
 
 # convenience constants so clients don't need to depend on httplib module
@@ -72,9 +72,9 @@ class RestHelper:
         httpConn.request(verb, path, body=body, headers=allHeaders)
         response = httpConn.getresponse()
         logger.debug('response: %d %s' % (response.status, response.reason))
-        if response.status == httplib.ACCEPTED:
+        logger.debug(response)
+        if response.status in (httplib.ACCEPTED, httplib.CREATED):
             logger.debug('  with location: %s' % self.getLocationHeader(response))
-        assert response is not None
         return response
 
     def get(self, path, headers={}):

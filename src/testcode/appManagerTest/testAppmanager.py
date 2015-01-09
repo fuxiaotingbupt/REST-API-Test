@@ -18,9 +18,10 @@ class AppmanagerTest(unittest.TestCase, TestBase):
         '''
         Add clourdera manager into serengeti server!
         '''
-        createJsonFile = self.testBaseInstance.getJsonFile("../../jsonFile/appManagerJsonFile/cmAdd.json")
+        createJsonFile = self.testBaseInstance.getJsonFile("../../jsonFile/appManagerJsonFile/amAdd.json")
         instanceName = createJsonFile['name']
-        self.api.appManagers.create(createJsonFile)
+        response = self.api.appManagers.create(createJsonFile)
+        print response.read()
         appmanagerLists = self.api.appManagers.getAll()
         for appmanager in appmanagerLists:
             if appmanager['name'] == instanceName:
