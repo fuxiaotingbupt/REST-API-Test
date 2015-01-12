@@ -1,5 +1,7 @@
 {
-           "name": "dhcpNetworkTest",
+           "name": "xfuTest",
            "portGroup": "vlan883",
-            "isDhcp": True
+           "isDhcp": True,
+           "dnsType": "NORMAL",
+           "isGenerateHostname": False
  }
