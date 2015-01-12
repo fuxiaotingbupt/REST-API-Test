@@ -2,7 +2,7 @@
    "name": "am",
    "description": "This is Ambari!",
    "type": "Ambari",
-   "url": "https://sin2-pekaurora-bdcqevlan89-150.eng.vmware.com:8443",
+   "url": "http://sin2-pekaurora-bdcqevlan88-97.eng.vmware.com:8080",
    "username": "admin",
    "password": "admin"
 }
