@@ -1,6 +1,6 @@
 SERENGETI_SERVER_IP='BDE'
 VC_USERNAME='root'
 VC_PASSWORD='vmware'
-DistroName='apache'
+DistroName = 'cdh'
 MapReduce_Version='mrv2'
 
